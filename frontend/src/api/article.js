@@ -48,7 +48,7 @@ export const getRecommendArticleById = (id) => {
 /** 根据文章id获取文章详情*/
 export const getArticleById = (id) => {
   return new Promise((resolve, reject) => {
-    http.get(`/api/article/getArticleById/${id}`, {}).then((res) => {
+    http.get(`/api/article/getArticleById?article_id=${id}`, {}).then((res) => {
       resolve(res);
     });
   });

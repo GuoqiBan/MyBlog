@@ -4,6 +4,7 @@ from app.user import router as user_router
 from app.article import router as article_router
 from app.config import router as config_router
 from app.statistic import router as statistic_router
+from app.photo import router as photo_router
 from app.tag import router as tag_router
 from starlette.middleware.cors import CORSMiddleware
 
@@ -14,6 +15,7 @@ app.include_router(article_router.router)
 app.include_router(config_router.router)
 app.include_router(statistic_router.router)
 app.include_router(tag_router.router)
+app.include_router(photo_router.router)
 
 app.add_middleware(
     CORSMiddleware,

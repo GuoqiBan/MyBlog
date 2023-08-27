@@ -30,11 +30,4 @@ async def login_for_access_token(loginmodel: LoginModel, db: Session = Depends(g
 @router.get("/getUserInfoById")
 async def get_user(id: int, token:str):
     print(id)
-    return {"code": 0, "result": {"nick_name": "Ban", "id": 1, "avatar":f"http://localhost:8080/api/user/get_avatar?avatar_id={id}"}}
-
-# 获取到头像
-@router.get("/get_avatar")
-async def get_avater(avatar_id:int):
-    print(os.getcwd())
-    filename = f"./file_service/avatar_{avatar_id}.jpg"
-    return FileResponse(filename)
+    return {"code": 0, "result": {"nick_name": "Ban", "id": 1, "avatar":f"http://localhost:8080/api/photo/get_avatar?id=3"}}

@@ -86,12 +86,12 @@ const getArticleDetails = async (id) => {
   if (res.code == 0) {
     mdState.text = res.result.article_content;
     articleInfo.value = res.result;
-    if (getUserInfo.value.id) {
-      const res = await getIsLikeByIdAndType({ for_id: articleInfo.value.id, type: 1, user_id: getUserInfo.value.id });
-      if (res.code == 0) {
-        isLike.value = res.result;
-      }
-    }
+    // if (getUserInfo.value.id) {
+    //   const res = await getIsLikeByIdAndType({ for_id: articleInfo.value.id, type: 1, user_id: getUserInfo.value.id });
+    //   if (res.code == 0) {
+    //     isLike.value = res.result;
+    //   }
+    // }
   }
 };
 
@@ -116,7 +116,7 @@ const getRecommendArticle = async (id) => {
 const init = async (id) => {
   loading.value = true;
   await getArticleDetails(id);
-  await getRecommendArticle(id);
+  // await getRecommendArticle(id);
   loading.value = false;
 };
 watch(
