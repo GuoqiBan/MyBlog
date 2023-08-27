@@ -91,7 +91,7 @@ const init = async () => {
   await getHomeArticleList("init");
   await getConfigDetail();
   await getStatistic();
-  // await getAllTags();
+  await getAllTags();
   param.loading = false;
   rightSizeLoading.value = false;
 };
