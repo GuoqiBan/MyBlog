@@ -36,11 +36,6 @@ module.exports = defineConfig({
   },
   configureWebpack: {
     // 按需导入element-plus main.js里不需要再引入了
-
-    // 关闭 webpack 的性能提示
-    performance: {
-      hints:false
-    },
     plugins: [
       AutoImport({
         resolvers: [ElementPlusResolver()],
@@ -51,7 +46,6 @@ module.exports = defineConfig({
       // new PrerenderSPAPlugin({
       //   routes: ["/", "/article"], // 需要预渲染的页面，要与router路由一致
       // }),
-
       new CompressionPlugin({
         //gzip压缩配置
         test: /\.js$|\.html$|\.css/, //匹配文件名
@@ -85,12 +79,22 @@ module.exports = defineConfig({
       //匹配规则
       "/api": {
         //要访问的跨域的域名
-        target: "http://127.0.0.1:8081",
+        target: " http://localhost:8888",
         ws: true,
         secure: false, // 使用的是http协议则设置为false，https协议则设置为true
         changOrigin: true, //开启代理
         pathRewrite: {
           "^/api": "",
+        },
+      },
+      "/wapi": {
+        //要访问的跨域的域名
+        target: "http://mrzym.top:3000",
+        ws: true,
+        secure: false, // 使用的是http协议则设置为false，https协议则设置为true
+        changOrigin: true, //开启代理
+        pathRewrite: {
+          "^/wapi": "",
         },
       },
     },
