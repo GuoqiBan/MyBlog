@@ -12,7 +12,7 @@ jobs:
         runs-on: ubuntu-latest #nodejs执行的操作系统
  
         steps:
-            - uses: actions/checkout@v3 #拉取你的最新代码
+            - uses: actions/checkout@v3 # 拉取你的最新代码
             - name: Use Node.js
               uses: actions/setup-node@v3
               with:
