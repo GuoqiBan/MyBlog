@@ -35,7 +35,7 @@ jobs:
               env:
                   SSH_PRIVATE_KEY: ${{ secrets.VUEPRESS_SERVER_PRI_KEY }}  # 密钥
                   ARGS: '-rltgoDzvO --delete'
-                  SOURCE: "frontend/public/ " # 将要复制到云服务器的静态文件夹
+                  SOURCE: "frontend/dist/ " # 将要复制到云服务器的静态文件夹
                   REMOTE_HOST: ${{ secrets.SERVER_IP }} # 云服务器公网地址
                   REMOTE_USER: ${{ secrets.USERNAME }} # 服务器用户名
                   TARGET: "/home/ban/" # 打包后的文件夹将放在目录
