@@ -17,6 +17,7 @@ jobs:
               uses: actions/setup-node@v3
               with:
                   node-version: "20.x"  # 指定你的node版本nd
+            - run: cd ./frontend;npm clean cache -f
             - run: cd ./frontend;npm install --force
             - run: cd ./frontend;npm config set registry https://registry.npm.taobao.org
             - run: cd ./frontend;npm install -g pnpm
