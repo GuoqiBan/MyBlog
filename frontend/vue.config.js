@@ -17,12 +17,6 @@ module.exports = defineConfig({
   productionSourceMap: false,
   publicPath: "./",
   transpileDependencies: true,
-  configureWebpack: {
-    // 关闭 webpack 的性能提示
-     performance: {
-       hints:false
-     }
-  },
   // eslint 保存时检查
   lintOnSave: false,
   chainWebpack: (config) => {
@@ -42,6 +36,11 @@ module.exports = defineConfig({
   },
   configureWebpack: {
     // 按需导入element-plus main.js里不需要再引入了
+
+    // 关闭 webpack 的性能提示
+    performance: {
+      hints:false
+    },
     plugins: [
       AutoImport({
         resolvers: [ElementPlusResolver()],
