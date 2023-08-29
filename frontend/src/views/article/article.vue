@@ -2,7 +2,7 @@
 import { ref, watch, reactive, h } from "vue";
 import { staticData, user } from "@/store/index.js";
 import { storeToRefs } from "pinia";
-import MdEditor from "md-editor-v3";
+import * as MdEditor from "md-editor-v3";
 import "md-editor-v3/lib/style.css";
 import { getArticleById, getRecommendArticleById, readingDuration, articleLike, cancelArticleLike } from "@/api/article";
 import { useRoute, useRouter } from "vue-router";
