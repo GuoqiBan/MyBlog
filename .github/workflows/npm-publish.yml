@@ -1,5 +1,9 @@
 # 发布项目到自己的服务器上的配置
+<<<<<<< Updated upstream
 name: Vue Server
+=======
+name: NpmServer
+>>>>>>> Stashed changes
 # on 表示触发actions的条件
 on:
     push:
