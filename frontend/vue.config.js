@@ -53,12 +53,12 @@ module.exports = defineConfig({
       //   routes: ["/", "/article"], // 需要预渲染的页面，要与router路由一致
       // }),
 
-      // new CompressionPlugin({
-      //   //gzip压缩配置
-      //   test: /\.js$|\.html$|\.css/, //匹配文件名
-      //   threshold: 10240, //对超过10kb的数据进行压缩
-      //   deleteOriginalAssets: false, //是否删除原文件
-      // }),
+      new CompressionPlugin({
+        //gzip压缩配置
+        test: /\.js$|\.html$|\.css/, //匹配文件名
+        threshold: 10240, //对超过10kb的数据进行压缩
+        deleteOriginalAssets: false, //是否删除原文件
+      }),
     ],
   },
   // scss
