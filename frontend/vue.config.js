@@ -17,6 +17,12 @@ module.exports = defineConfig({
   productionSourceMap: false,
   publicPath: "./",
   transpileDependencies: true,
+  configureWebpack: {
+    // 关闭 webpack 的性能提示
+     performance: {
+       hints:false
+     }
+  },
   // eslint 保存时检查
   lintOnSave: false,
   chainWebpack: (config) => {
@@ -46,12 +52,13 @@ module.exports = defineConfig({
       // new PrerenderSPAPlugin({
       //   routes: ["/", "/article"], // 需要预渲染的页面，要与router路由一致
       // }),
-      new CompressionPlugin({
-        //gzip压缩配置
-        test: /\.js$|\.html$|\.css/, //匹配文件名
-        threshold: 10240, //对超过10kb的数据进行压缩
-        deleteOriginalAssets: false, //是否删除原文件
-      }),
+
+      // new CompressionPlugin({
+      //   //gzip压缩配置
+      //   test: /\.js$|\.html$|\.css/, //匹配文件名
+      //   threshold: 10240, //对超过10kb的数据进行压缩
+      //   deleteOriginalAssets: false, //是否删除原文件
+      // }),
     ],
   },
   // scss
@@ -85,16 +92,6 @@ module.exports = defineConfig({
         changOrigin: true, //开启代理
         pathRewrite: {
           "^/api": "",
-        },
-      },
-      "/wapi": {
-        //要访问的跨域的域名
-        target: "http://mrzym.top:3000",
-        ws: true,
-        secure: false, // 使用的是http协议则设置为false，https协议则设置为true
-        changOrigin: true, //开启代理
-        pathRewrite: {
-          "^/wapi": "",
         },
       },
     },
