@@ -18,8 +18,8 @@ jobs:
               with:
                   node-version: "16.x"  # 指定你的node版本nd
             - run: cd ./frontend;npm cache clean -f
-            - run: cd ./frontend;npm install --force
-            - run: cd ./frontend;npm config set registry https://registry.npm.taobao.org
+            - run: cd ./frontend;npm install
+            # - run: cd ./frontend;npm config set registry https://registry.npm.taobao.org
             - run: cd ./frontend;npm install -g pnpm
             - run: cd ./frontend;npm run build
             - name: CopyProject
