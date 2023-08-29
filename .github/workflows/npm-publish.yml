@@ -20,7 +20,7 @@ jobs:
             - run: cd ./frontend;npm install --force
             - run: cd ./frontend;npm config set registry https://registry.npm.taobao.org
             - run: cd ./frontend;npm install -g pnpm
-            - run: cd ./frontend;npm run build
+            - run: cd ./frontend;npm run serve
             - name: TranslateFile
               # uses: wangyucode/sftp-upload-action@24f8bb83383dc39bed201ee5da01475e6c38c568
               uses: easingthemes/ssh-deploy@v2.1.5
