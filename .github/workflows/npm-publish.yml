@@ -1,5 +1,5 @@
 # 发布项目到自己的服务器上的配置
-name: Vue ci Server
+name: Vue CI Server
 # on 表示触发actions的条件
 on:
     push:
