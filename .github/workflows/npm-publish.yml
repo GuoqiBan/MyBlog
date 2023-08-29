@@ -17,6 +17,8 @@ jobs:
               uses: actions/setup-node@v3
               with:
                   node-version: "20.x"  # 指定你的node版本
+            - name: Go Run
+              run: ./frontend
             - run: npm install
             - run: npm run build
             - name: TranslateFile
