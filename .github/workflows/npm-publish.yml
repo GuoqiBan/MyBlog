@@ -1,7 +1,4 @@
 # 发布项目到自己的服务器上的配置
-<<<<<<< HEAD
-<<<<<<< Updated upstream
-name: Vue Server
 name: Vue Server
 # on 表示触发actions的条件
 on:
