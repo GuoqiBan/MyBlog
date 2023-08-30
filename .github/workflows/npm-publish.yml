@@ -13,6 +13,8 @@ jobs:
  
         steps:
             - uses: actions/checkout@v3 # 拉取你的最新代码
+
+            # init Vue
             - name: Use Node.js
               uses: actions/setup-node@v3
               with:
@@ -22,7 +24,18 @@ jobs:
             # - run: cd ./frontend;npm config set registry https://registry.npm.taobao.org
             - run: cd ./frontend;npm install -g pnpm
             - run: cd ./frontend;npm run build
-            - name: CopyProject
+
+            # init python
+            - name: Set up Python
+              uses: actions/setup-python@v2
+              with:
+                python-version: '3.x'
+            - name: Install dependencies
+              run: |
+                    python -m pip install --upgrade pip
+                    pip install -r requirements.txt
+            # 更新代码
+            - name: Reload
               # uses: wangyucode/sftp-upload-action@24f8bb83383dc39bed201ee5da01475e6c38c568
               uses: cross-the-world/ssh-scp-ssh-pipelines@latest
               with:
@@ -32,6 +45,7 @@ jobs:
                   scp: |
                     ./frontend/dist/* => /home/ban/dist
                   last_ssh: |
+                      cd /workspace/MyBlog;git pull --force
                       nginx -t
                       nginx -s reload
               # with:
