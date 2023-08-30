@@ -24,7 +24,16 @@ jobs:
             - run: cd ./frontend;npm run build
             - name: CopyProject
               # uses: wangyucode/sftp-upload-action@24f8bb83383dc39bed201ee5da01475e6c38c568
-              uses: easingthemes/ssh-deploy@v2.1.5
+              uses: cross-the-world/ssh-scp-ssh-pipelines@latest
+              with:
+                  host: ${{ secrets.SERVER_IP }} #你的nginx服务器公网ip
+                  user: ${{ secrets.USERNAME }} #你的nginx服务器用户名
+                  pass: ${{ secrets.PASSWORD }} #你的nginx服务器密码
+                  scp: |
+                    ./dist/* => /home/ban/dist
+                  last_ssh: |
+                      nginx -t
+                      nginx -s reload
               # with:
               #     host: ${{ secrets.SERVER_IP }} #你的nginx服务器公网ip
               #     port: ${{ secrets.SERVER_PORT }} #你的nginx服务器ssh端口
@@ -32,10 +41,10 @@ jobs:
               #     password: ${{ secrets.PASSWORD }} #你的nginx服务器密码
               #     localDir: "dist" #你vue项目build好的文件的路径,每次服务器上会自动删除对应的文件夹后重新覆盖
               #     remoteDir: ${{ secrets.SERVER_DESTINATION }} #你要把你build好的文件夹放到nginx服务器上的什么位置，一般都是nginx配置的站点路径
-              env:
-                  SSH_PRIVATE_KEY: ${{ secrets.VUEPRESS_SERVER_PRI_KEY }}  # 密钥
-                  ARGS: '-rltgoDzvO --delete'
-                  SOURCE: "frontend/public/ " # 将要复制到云服务器的静态文件夹
-                  REMOTE_HOST: ${{ secrets.SERVER_IP }} # 云服务器公网地址
-                  REMOTE_USER: ${{ secrets.USERNAME }} # 服务器用户名
-                  TARGET: "/home/ban/" # 打包后的文件夹将放在目录
+              # env:
+              #     SSH_PRIVATE_KEY: ${{ secrets.VUEPRESS_SERVER_PRI_KEY }}  # 密钥
+              #     ARGS: '-rltgoDzvO --delete'
+              #     SOURCE: "frontend/public/ " # 将要复制到云服务器的静态文件夹
+              #     REMOTE_HOST: ${{ secrets.SERVER_IP }} # 云服务器公网地址
+              #     REMOTE_USER: ${{ secrets.USERNAME }} # 服务器用户名
+              #     TARGET: "/home/ban/" # 打包后的文件夹将放在目录
