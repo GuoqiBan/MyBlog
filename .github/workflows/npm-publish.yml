@@ -24,16 +24,7 @@ jobs:
             # - run: cd ./frontend;npm config set registry https://registry.npm.taobao.org
             - run: cd ./frontend;npm install -g pnpm
             - run: cd ./frontend;npm run build
-
-            # init python
-            - name: Set up Python
-              uses: actions/setup-python@v2
-              with:
-                python-version: '3.10.x'
-            - name: Install dependencies
-              run: |
-                    python -m pip install --upgrade pip
-                    pip install -r ./backend/requirements.txt
+            
             # 更新代码
             - name: Reload
               # uses: wangyucode/sftp-upload-action@24f8bb83383dc39bed201ee5da01475e6c38c568
@@ -45,20 +36,6 @@ jobs:
                   scp: |
                     ./frontend/dist/* => /home/ban/dist
                   last_ssh: |
-                      cd /workspace/MyBlog;git pull --force
+                      cd /workspace/MyBlog/backend;git pull --force;pip install -r requirements.txt
                       nginx -t
                       nginx -s reload
-              # with:
-              #     host: ${{ secrets.SERVER_IP }} #你的nginx服务器公网ip
-              #     port: ${{ secrets.SERVER_PORT }} #你的nginx服务器ssh端口
-              #     username: ${{ secrets.USERNAME }} #你的nginx服务器用户名
-              #     password: ${{ secrets.PASSWORD }} #你的nginx服务器密码
-              #     localDir: "dist" #你vue项目build好的文件的路径,每次服务器上会自动删除对应的文件夹后重新覆盖
-              #     remoteDir: ${{ secrets.SERVER_DESTINATION }} #你要把你build好的文件夹放到nginx服务器上的什么位置，一般都是nginx配置的站点路径
-              # env:
-              #     SSH_PRIVATE_KEY: ${{ secrets.VUEPRESS_SERVER_PRI_KEY }}  # 密钥
-              #     ARGS: '-rltgoDzvO --delete'
-              #     SOURCE: "frontend/public/ " # 将要复制到云服务器的静态文件夹
-              #     REMOTE_HOST: ${{ secrets.SERVER_IP }} # 云服务器公网地址
-              #     REMOTE_USER: ${{ secrets.USERNAME }} # 服务器用户名
-              #     TARGET: "/home/ban/" # 打包后的文件夹将放在目录
