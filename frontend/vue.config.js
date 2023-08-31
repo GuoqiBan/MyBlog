@@ -79,7 +79,7 @@ module.exports = defineConfig({
       //匹配规则
       "/api": {
         //要访问的跨域的域名
-        target: "http://ban.ates.top",
+        target: "http://ban.ates.top:8081",
         ws: true,
         secure: false, // 使用的是http协议则设置为false，https协议则设置为true
         changOrigin: true, //开启代理
