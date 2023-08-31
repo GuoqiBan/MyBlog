@@ -70,10 +70,10 @@ module.exports = defineConfig({
     },
   },
   devServer: {
-    port: 8080,
+    port: 80,
     https: false,
     open: {
-      target: [`http://localhost:${8080}`],
+      target: [`http://localhost:${80}`],
     },
     proxy: {
       //匹配规则
