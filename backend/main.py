@@ -20,7 +20,7 @@ app.include_router(photo_router.router)
 app.add_middleware(
     CORSMiddleware,
     # 允许跨域的源列表，例如 ["http://www.example.org"] 等等，["*"] 表示允许任何源
-    allow_origins=["*"],
+    allow_origins=["http://154.9.253.169:80"],
     # 跨域请求是否支持 cookie，默认是 False，如果为 True，allow_origins 必须为具体的源，不可以是 ["*"]
     allow_credentials=True,
     # 允许跨域请求的 HTTP 方法列表，默认是 ["GET"]
