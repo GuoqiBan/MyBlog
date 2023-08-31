@@ -73,7 +73,7 @@ module.exports = defineConfig({
     port: 80,
     https: false,
     open: {
-      target: [`http://localhost:${80}`],
+      target: [`http://ban.ates.top`],
     },
     proxy: {
       //匹配规则
