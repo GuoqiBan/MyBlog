@@ -37,5 +37,5 @@ jobs:
                     ./frontend/dist/* => /home/ban/dist
                   last_ssh: |
                       cd /workspace/MyBlog/backend;git pull --force;pip install -r requirements.txt
-                      nginx -t
-                      nginx -s reload
+                      sudo nginx -t
+                      sudo nginx -s reload
