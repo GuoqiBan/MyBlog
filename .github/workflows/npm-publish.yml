@@ -36,6 +36,6 @@ jobs:
                   scp: |
                     ./frontend/dist/* => /home/ban/dist
                   last_ssh: |
-                      cd /workspace/MyBlog/backend;git pull --force;pip install -r requirements.txt
+                      cd /workspace/MyBlog/backend;git pull --force;pip install -r requirements.txt;bash gunicorn_restart.sh
                       sudo nginx -t
                       sudo nginx -s reload
